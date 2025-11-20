@@ -1,10 +1,9 @@
 import streamlit as st
 import sys
 from io import StringIO
-from langchain.agents.initialize import initialize_agent
-from langchain.agents.agent_types import AgentType
+from langchain.agents import initialize_agent, AgentType
 from langchain.tools import tool
-from langchain.llms.base import LLM
+from langchain_core.language_models import BaseLLM
 from typing import Optional, List, Mapping, Any
 
 # --- IMPORTS FOR REAL LOCAL MODELS ---
@@ -41,7 +40,7 @@ def retrieve_standard_document(topic: str) -> str:
 
 tools = [power_system_calculator, retrieve_standard_document]
 
-class MockLocalLLM(tool.BaseLLM):
+class MockLocalLLM(BaseLLM):
     @property
     def _llm_type(self) -> str:
         return "mock_local_llm"
