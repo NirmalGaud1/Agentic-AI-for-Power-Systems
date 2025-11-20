@@ -1,7 +1,8 @@
 import streamlit as st
 import sys
 from io import StringIO
-from langchain.agents import initialize_agent, AgentType
+from langchain.agents.initialize import initialize_agent
+from langchain.agents.agent_types import AgentType
 from langchain.tools import tool
 from langchain.llms.base import LLM
 from typing import Optional, List, Mapping, Any
